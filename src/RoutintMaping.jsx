@@ -1,10 +1,10 @@
 //import { useState } from 'react'
-import { Route, Routes, NavLink as Link } from 'react-router-dom'
-import { Navbar, NavbarBrand, Nav, NavItem, NavLink}  from 'reactstrap'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css'
-import Home from './views/Home'
-import About from './views/About'
+import { Route, Routes, Navigate} from 'react-router-dom'
+// import { Navbar, NavbarBrand, Nav, NavItem, NavLink}  from 'reactstrap'
+// import 'bootstrap/dist/css/bootstrap.min.css';
+//import './App.css'
+// import Home from './views/Home'
+// import About from './views/About'
 import Auth from './views/Auth'
 import SignUp from './views/SignUp'
 import Login from './views/Login'
@@ -17,9 +17,9 @@ function RoutintMaping() {
 
   return (
     <>
-      <header>
+      {/* <header>
         <Navbar light expand="lg">
-          <NavbarBrand href="/" className="mr-auto">ToDoList</NavbarBrand>
+          <NavbarBrand to="/" className="mr-auto">ToDoList</NavbarBrand>
             <Nav className="ml-auto" navbar>  
               <NavItem>
                 <NavLink tag ={Link} activeClassName="active" to="/">Home</NavLink>
@@ -38,13 +38,12 @@ function RoutintMaping() {
               </NavItem>
             </Nav>
         </Navbar>
-      </header>
+      </header> */}
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/auth" element={ <Auth />} >
+        <Route path="/" element={ <Auth />} >
           <Route path="sign_up" element={<SignUp />} />
           <Route path="login" element={<Login />} />
+          <Route index element={<Navigate to="login" />} />
         </Route>
         <Route path="/todo" element={ <ToDoList />} />
       </Routes>

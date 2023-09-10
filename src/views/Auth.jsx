@@ -1,19 +1,18 @@
 import { Outlet } from "react-router-dom";
-import reactLogo from '../assets/react.svg';
-import viteLogo from '/vite.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { logoIcon ,workingIcon } from '../assets/GrobalString';
+import '../GrobalStyle.css';
 
 function Auth(){
   return(<>
-    <div className="container">
-      <div className="row col-12">
-        <div className="col-sm-12 col-lg-6">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-          <img src={reactLogo} className="logo react" alt="React logo" />
+    <div id="loginPage" className="bg-yellow">
+        <div className="conatiner loginPage vhContainer ">
+            <div className="side">
+                <a href="#"><img className="logoImg" src={logoIcon} alt="" /></a>
+                <img className="d-m-n" src={workingIcon} alt="workImg" />
+            </div>
+            <Outlet />
         </div>
-        <div className="col-sm-12 col-lg-6">
-          <Outlet />
-        </div>
-      </div>
     </div>
   </>)
 }

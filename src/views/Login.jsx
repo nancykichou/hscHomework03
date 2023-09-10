@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Form } from "reactstrap";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from "axios";
 import Swal from 'sweetalert2';
+import '../GrobalStyle.css';
 
 const { VITE_APP_HOST } = import.meta.env;
 
@@ -37,7 +37,7 @@ function Login(){
           text: `[${err.response.data.message}]+跳轉首頁!`,
           icon: "error"
           }).then(() => {
-            setTimeout(navigate('/'), 3000)
+            setTimeout(navigate('/#/login'), 3000)
           })
         })
       .finally(() => {
@@ -47,21 +47,15 @@ function Login(){
 
   return(
     <>
-      <Form id="login">
-      <div className="form-group row">
-        <div className="my-4">
-          <label htmlFor="email" className="form-group col-2 me-2 text-end">電子信箱</label>
-          <input type="email" id="email" name="email" className="form-group" onChange={(e)=>handleChange(e)}/>
-        </div>
-        <div className="mb-4">
-          <label htmlFor="password" className="form-group col-2 me-2 text-end">密碼</label>
-          <input type="password" id="password" name="password" className="form-group" onChange={(e)=>handleChange(e)}/>
-        </div>
-      </div>
-      <div className="form-group d-flex justify-content-end">
-        <button type="submit" disabled={isLoading} className="btn btn-primary col-3" onClick={(e)=>handleSubmit(e)}>登入</button>
-      </div>
-    </Form>
+      <form className="formControls" >
+        <h2 className="formControls_txt">最實用的線上代辦事項服務</h2>
+        <label htmlFor="email" className="formControls_label">電子信箱</label>
+        <input type="email" id="email" name="email" className="formControls_input" onChange={(e)=>handleChange(e)}/>
+        <label htmlFor="password" className="formControls_label">密碼</label>
+        <input type="password" id="password" name="password" className="formControls_input" onChange={(e)=>handleChange(e)}/>
+        <button type="submit" disabled={isLoading} className="formControls_btnSubmit" onClick={(e)=>handleSubmit(e)}>登入</button>
+        <NavLink className="formControls_btnLink" to="/sign_up">註冊帳號</NavLink>
+      </form>
     </>
   )
 }
